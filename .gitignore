@@ -1,0 +1,20 @@
+# Credentials — never commit
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# Temp ad params files
+/tmp/gotixi_ad_params_*.json
+
+# OS
+.DS_Store
+Thumbs.db

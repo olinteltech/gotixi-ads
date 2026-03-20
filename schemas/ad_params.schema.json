@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GoTixi Ad Params",
+  "description": "Structured ad parameters output by Claude, consumed by create_full_ad.py",
+  "type": "object",
+  "required": [
+    "headline",
+    "primary_text",
+    "description",
+    "call_to_action",
+    "campaign_name",
+    "ad_set_name",
+    "ad_name",
+    "image_path",
+    "audience_segment",
+    "daily_budget_inr",
+    "campaign_objective"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "headline": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "Primary ad headline — Volkhov feel, warm voice, no exclamation marks"
+    },
+    "primary_text": {
+      "type": "string",
+      "maxLength": 125,
+      "description": "Main ad body copy — Poppins voice, lead with destination/experience"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Link description — reinforces quality, not deals"
+    },
+    "call_to_action": {
+      "type": "string",
+      "enum": ["LEARN_MORE", "BOOK_TRAVEL", "CONTACT_US", "GET_QUOTE", "SIGN_UP"]
+    },
+    "campaign_name": {
+      "type": "string",
+      "description": "Human-readable campaign name, includes destination + date"
+    },
+    "ad_set_name": {
+      "type": "string",
+      "description": "Includes audience segment for easy Ads Manager navigation"
+    },
+    "ad_name": {
+      "type": "string",
+      "description": "Specific ad identifier"
+    },
+    "image_path": {
+      "type": "string",
+      "description": "Local path to ad image — passed through from brief"
+    },
+    "link_url": {
+      "type": "string",
+      "description": "Destination URL — falls back to GOTIXI_LINK_URL env var if omitted"
+    },
+    "audience_segment": {
+      "type": "string",
+      "enum": ["families", "couples", "solo_explorers", "adventurers", "luxury_travelers", "first_timers"]
+    },
+    "daily_budget_inr": {
+      "type": "number",
+      "minimum": 100,
+      "description": "Daily budget in INR — script converts to paise before API call"
+    },
+    "campaign_objective": {
+      "type": "string",
+      "enum": [
+        "OUTCOME_TRAFFIC",
+        "OUTCOME_LEADS",
+        "OUTCOME_AWARENESS",
+        "OUTCOME_ENGAGEMENT",
+        "OUTCOME_SALES"
+      ]
+    },
+    "targeting": {
+      "type": "object",
+      "properties": {
+        "countries": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["IN"]
+        },
+        "age_min": { "type": "integer", "default": 25 },
+        "age_max": { "type": "integer", "default": 55 },
+        "genders": { "type": "array", "items": { "type": "integer" }, "default": [] }
+      }
+    }
+  }
+}
