@@ -24,6 +24,7 @@ def create_campaign(campaign_name: str, objective: str) -> str:
             "objective": objective,
             "status": Campaign.Status.paused,
             "special_ad_categories": [],
+            "is_adset_budget_sharing_enabled": False,
         },
     )
     return campaign["id"]

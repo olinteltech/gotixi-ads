@@ -51,6 +51,7 @@ def create_ad_set(
         "geo_locations": {"countries": countries},
         "age_min": age_min,
         "age_max": age_max,
+        "targeting_automation": {"advantage_audience": 0},
     }
     if genders:
         targeting["genders"] = genders
@@ -64,6 +65,7 @@ def create_ad_set(
             "targeting": targeting,
             "optimization_goal": AdSet.OptimizationGoal.link_clicks,
             "billing_event": AdSet.BillingEvent.impressions,
+            "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
             "status": AdSet.Status.paused,
         },
     )
