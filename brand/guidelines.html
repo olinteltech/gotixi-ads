@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GoTixi — Brand Guidelines</title>
+<link href="https://fonts.googleapis.com/css2?family=Volkhov:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@300;400;500;600&family=Inter:wght@300;400;500&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange:      #F08802;
+    --forest:      #323729;
+    --cream-warm:  #FFF9F5;
+    --cream-soft:  #FFF4EC;
+    --light-grey:  #E7E7E7;
+    --deep-olive:  #323729;
+    --charcoal:    #4B5563;
+    --slate:       #667085;
+    --border:      #E4E6E8;
+    --orange-pale: #FFF0D6;
+    --orange-dark: #C87002;
+  }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream-warm); color: var(--charcoal); font-family: 'Poppins', sans-serif; font-size: 15px; line-height: 1.7; }
+
+  /* COVER */
+  .cover { background: var(--forest); min-height: 100vh; display: grid; grid-template-rows: 1fr auto; padding: 72px 80px 64px; position: relative; overflow: hidden; }
+  .cover-bg-circle { position: absolute; border-radius: 50%; pointer-events: none; }
+  .cover-bg-circle.c1 { width: 560px; height: 560px; top: -160px; right: -120px; background: radial-gradient(circle, rgba(240,136,2,0.18) 0%, transparent 70%); }
+  .cover-bg-circle.c2 { width: 360px; height: 360px; bottom: -80px; left: 160px; background: radial-gradient(circle, rgba(240,136,2,0.08) 0%, transparent 70%); }
+  .cover-main { align-items: flex-start; position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: flex-end; }
+  .cover-eyebrow { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase; color: var(--orange); margin-bottom: 36px; animation: fadeUp .7s ease both .1s; }
+  .cover-logo {   margin-left: -2px; height: 60px; display: block; margin-bottom: 40px; animation: fadeUp .7s ease both .2s; }
+  .cover-logo-fallback { display: none; font-family: 'Volkhov', serif; font-size: 52px; font-weight: 400; color: var(--cream-warm); letter-spacing: -1px; margin-bottom: 32px; animation: fadeUp .7s ease both .2s; }
+  .cover-logo-fallback span { color: var(--orange); }
+  .cover-title { font-family: 'Volkhov', serif; font-size: clamp(52px, 7vw, 92px); font-weight: 400; color: var(--cream-warm); line-height: 1.05; letter-spacing: -1.5px; animation: fadeUp .7s ease both .3s; }
+  .cover-title em { font-style: italic; color: var(--orange); }
+  .cover-tagline { font-family: 'Caveat', cursive; font-size: 26px; color: rgba(255,249,245,0.5); margin-top: 24px; animation: fadeUp .7s ease both .45s; }
+  .cover-footer { position: relative; z-index: 1; display: flex; align-items: flex-end; justify-content: space-between; animation: fadeUp .7s ease both .55s; }
+  .cover-footer p { font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,249,245,0.3); }
+  .cover-version { font-family: 'Volkhov', serif; font-size: 88px; font-weight: 400; font-style: italic; color: rgba(240,136,2,0.12); line-height: 1; position: absolute; right: 80px; bottom: 64px; pointer-events: none; }
+
+  /* TOC */
+  .toc { background: var(--cream-soft); padding: 72px 80px; border-bottom: 1px solid var(--border); }
+  .toc-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase; color: var(--orange); margin-bottom: 40px; }
+  .toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2px; }
+  .toc-item { display: flex; align-items: center; gap: 20px; padding: 18px 24px; background: var(--cream-warm); text-decoration: none; color: inherit; transition: background .2s, transform .2s; border-left: 3px solid transparent; }
+  .toc-item:hover { background: var(--orange-pale); border-left-color: var(--orange); transform: translateX(3px); }
+  .toc-num { font-family: 'Volkhov', serif; font-size: 30px; font-weight: 400; color: var(--orange); min-width: 44px; line-height: 1; }
+  .toc-text strong { display: block; font-size: 13px; font-weight: 500; color: var(--deep-olive); }
+  .toc-text span { font-size: 11px; color: var(--slate); }
+
+  /* SECTIONS */
+  .section { padding: 96px 80px; border-bottom: 1px solid var(--border); }
+  .section.alt { background: var(--cream-soft); }
+  .section-header { display: flex; align-items: flex-start; gap: 36px; margin-bottom: 56px; }
+  .section-num { font-family: 'Volkhov', serif; font-size: 88px; font-weight: 400; font-style: italic; color: var(--orange); opacity: .18; line-height: 1; flex-shrink: 0; }
+  .section-eyebrow { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+  .section-title { font-family: 'Volkhov', serif; font-size: clamp(32px, 4vw, 50px); font-weight: 400; line-height: 1.1; letter-spacing: -.5px; color: var(--deep-olive); }
+  .section-desc { font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 300; color: var(--slate); max-width: 580px; line-height: 1.8; margin-top: 14px; }
+  .divider { width: 36px; height: 3px; background: var(--orange); border-radius: 2px; margin: 28px 0; }
+
+  /* CARDS */
+  .rule-card { background: var(--cream-warm); border-left: 3px solid var(--orange); padding: 26px 30px; margin-bottom: 12px; position: relative; }
+  .alt .rule-card { background: white; }
+  .rule-card h4 { font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 500; margin-bottom: 6px; color: var(--deep-olive); }
+  .rule-card p { font-size: 13px; color: var(--slate); line-height: 1.7; }
+  .rule-tag { position: absolute; top: 26px; right: 26px; font-family: 'Inter', sans-serif; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 3px 9px; border-radius: 2px; }
+  .tag-do { background: rgba(50,55,41,.1); color: var(--forest); }
+  .tag-dont { background: rgba(240,136,2,.12); color: var(--orange-dark); }
+
+  /* GRID */
+  .three-col { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 28px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 28px; }
+  .pillar-card { background: var(--cream-warm); padding: 36px 30px; border-top: 3px solid transparent; transition: border-color .2s; }
+  .pillar-card:hover { border-top-color: var(--orange); }
+  .alt .pillar-card { background: white; }
+  .pillar-icon { font-size: 28px; margin-bottom: 14px; }
+  .pillar-card h4 { font-family: 'Volkhov', serif; font-size: 20px; font-weight: 400; color: var(--deep-olive); margin-bottom: 8px; }
+  .pillar-card p { font-size: 13px; color: var(--slate); line-height: 1.65; }
+
+  /* PALETTE */
+  .palette-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 3px; margin-top: 8px; }
+  .swatch { height: 150px; display: flex; flex-direction: column; justify-content: flex-end; padding: 14px 16px; }
+  .swatch-name { font-size: 12px; font-weight: 500; line-height: 1.3; }
+  .swatch-hex { font-family: 'Inter', monospace; font-size: 11px; opacity: .7; margin-top: 3px; }
+  .swatch-role { font-family: 'Inter', sans-serif; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; opacity: .55; margin-top: 4px; }
+  .swatch.light .swatch-name, .swatch.light .swatch-hex, .swatch.light .swatch-role { color: var(--deep-olive); }
+  .swatch.dark .swatch-name, .swatch.dark .swatch-hex, .swatch.dark .swatch-role { color: #fff; }
+  .swatch.bordered { border: 1px solid var(--border); }
+
+  /* TYPOGRAPHY */
+  .type-block { background: var(--cream-warm); padding: 44px 48px; margin-bottom: 12px; }
+  .alt .type-block { background: white; }
+  .type-tag { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); display: block; margin-bottom: 20px; }
+  .specimen-volkhov { font-family: 'Volkhov', serif; font-size: clamp(32px, 5vw, 58px); font-weight: 400; line-height: 1.12; color: var(--deep-olive); letter-spacing: -.5px; }
+  .specimen-poppins { font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 300; line-height: 1.8; color: var(--charcoal); max-width: 580px; }
+  .specimen-inter { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--slate); }
+  .specimen-caveat { font-family: 'Caveat', cursive; font-size: 36px; font-weight: 500; color: var(--orange); line-height: 1.3; }
+  .type-meta { font-size: 12px; color: var(--slate); margin-top: 14px; letter-spacing: .3px; }
+
+  /* VOICE */
+  .voice-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 2px; }
+  .voice-box { padding: 28px 32px; }
+  .voice-box.good { background: rgba(50,55,41,.05); border-top: 3px solid var(--forest); }
+  .voice-box.bad { background: rgba(240,136,2,.06); border-top: 3px solid var(--orange); }
+  .voice-label { font-family: 'Inter', sans-serif; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; font-weight: 500; margin-bottom: 12px; }
+  .voice-box.good .voice-label { color: var(--forest); }
+  .voice-box.bad .voice-label { color: var(--orange-dark); }
+  .voice-box blockquote { font-family: 'Volkhov', serif; font-size: 19px; font-style: italic; font-weight: 400; line-height: 1.55; color: var(--deep-olive); }
+
+  /* TAGLINE HERO */
+  .tagline-hero { background: var(--forest); padding: 64px 72px; text-align: center; margin-bottom: 28px; position: relative; overflow: hidden; }
+  .tagline-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 50%, rgba(240,136,2,0.14) 0%, transparent 70%); }
+  .tagline-hero p { font-family: 'Volkhov', serif; font-size: clamp(22px, 3vw, 40px); font-weight: 400; font-style: italic; color: var(--cream-warm); line-height: 1.45; position: relative; z-index: 1; }
+  .tagline-hero em { font-style: normal; color: var(--orange); }
+  .tagline-hero .caveat-line { font-family: 'Caveat', cursive; font-size: 22px; color: rgba(255,249,245,0.45); display: block; margin-top: 16px; position: relative; z-index: 1; }
+
+  /* LOGO */
+  .logo-stage { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 24px; }
+  .logo-box { padding: 64px 48px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; }
+  .logo-box.dark { background: var(--forest); }
+  .logo-box.light { background: var(--cream-warm); border: 1px solid var(--border); }
+  .logo-box img { height: 48px; max-width: 100%; object-fit: contain; }
+  .logo-box-label { font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; font-weight: 500; }
+  .logo-box.dark .logo-box-label { color: rgba(255,249,245,0.35); }
+  .logo-box.light .logo-box-label { color: var(--slate); }
+
+  /* AUDIENCE */
+  .audience-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap: 2px; margin-top: 28px; }
+  .audience-card { background: var(--cream-warm); padding: 28px; text-align: center; }
+  .alt .audience-card { background: white; }
+  .audience-emoji { font-size: 32px; display: block; margin-bottom: 10px; }
+  .audience-card h4 { font-size: 13px; font-weight: 500; color: var(--deep-olive); margin-bottom: 4px; }
+  .audience-card p { font-size: 12px; color: var(--slate); line-height: 1.5; }
+
+  /* METRICS */
+  .metric-row { display: flex; gap: 2px; margin-top: 32px; flex-wrap: wrap; }
+  .metric-box { background: var(--cream-warm); padding: 28px 32px; flex: 1; min-width: 130px; }
+  .alt .metric-box { background: white; }
+  .metric-num { font-family: 'Volkhov', serif; font-size: 46px; font-weight: 400; color: var(--orange); line-height: 1; }
+  .metric-label { font-size: 12px; color: var(--slate); margin-top: 4px; }
+
+  /* PHOTO */
+  .photo-principle { display: flex; align-items: flex-start; gap: 24px; padding: 26px 28px; background: var(--cream-warm); margin-bottom: 2px; }
+  .alt .photo-principle { background: white; }
+  .photo-num { font-family: 'Volkhov', serif; font-size: 40px; font-weight: 400; font-style: italic; color: var(--orange); opacity: .35; line-height: 1; flex-shrink: 0; width: 48px; }
+  .photo-principle h4 { font-size: 13px; font-weight: 500; color: var(--deep-olive); margin-bottom: 4px; }
+  .photo-principle p { font-size: 13px; color: var(--slate); line-height: 1.65; }
+
+  /* DO / DON'T */
+  .do-dont-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 28px; }
+  .do-header, .dont-header { padding: 14px 22px; font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; font-weight: 500; }
+  .do-header { background: var(--forest); color: white; }
+  .dont-header { background: var(--orange); color: white; }
+  .do-item, .dont-item { padding: 14px 22px; font-size: 13px; line-height: 1.55; display: flex; align-items: flex-start; gap: 10px; border-bottom: 1px solid var(--border); }
+  .do-item { background: rgba(50,55,41,.04); }
+  .dont-item { background: rgba(240,136,2,.04); }
+  .do-item::before { content: '✓'; color: var(--forest); font-weight: 600; flex-shrink: 0; }
+  .dont-item::before { content: '✕'; color: var(--orange); font-weight: 600; flex-shrink: 0; }
+
+  /* FOOTER */
+  .doc-footer { background: var(--forest); padding: 56px 80px; display: flex; align-items: center; justify-content: space-between; }
+  .doc-footer img { height: 36px; }
+  .doc-footer p { font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,249,245,0.3); }
+  .doc-footer p + p { margin-top: 6px; }
+
+  @keyframes fadeUp { from { opacity:0; transform: translateY(18px); } to { opacity:1; transform: translateY(0); } }
+
+  @media (max-width: 780px) {
+    .cover, .toc, .section { padding: 48px 24px; }
+    .section-header { flex-direction: column; gap: 12px; }
+    .section-num { font-size: 52px; }
+    .three-col, .two-col, .voice-pair, .do-dont-grid, .logo-stage { grid-template-columns: 1fr; }
+    .doc-footer { flex-direction: column; gap: 24px; text-align: center; }
+    .cover-version { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-bg-circle c1"></div>
+  <div class="cover-bg-circle c2"></div>
+  <div class="cover-main">
+    <p class="cover-eyebrow">Brand Guidelines · 2026 Edition</p>
+    <img src="https://gotixi.com/images/common/logo-dark.svg" class="cover-logo" alt="GoTixi"
+      onerror="this.style.display='none'; document.getElementById('logoFallbackCover').style.display='block';">
+    <div id="logoFallbackCover" class="cover-logo-fallback">Go<span>Tixi</span></div>
+    <h1 class="cover-title">Brand<br><em>Bible</em></h1>
+    <p class="cover-tagline">Warm, trustworthy &amp; travel-forward ✈︎</p>
+  </div>
+  <div class="cover-footer">
+    <div>
+      <p>Confidential · Internal Use</p>
+      <p style="margin-top:4px;">gotixi.com</p>
+    </div>
+    <p>10 Core Guidelines</p>
+  </div>
+  <div class="cover-version">10</div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <p class="toc-label">Contents</p>
+  <div class="toc-grid">
+    <a href="#s1"  class="toc-item"><span class="toc-num">01</span><div class="toc-text"><strong>Brand Purpose &amp; Mission</strong><span>Why GoTixi exists</span></div></a>
+    <a href="#s2"  class="toc-item"><span class="toc-num">02</span><div class="toc-text"><strong>Logo &amp; Identity</strong><span>Name, mark, mascot</span></div></a>
+    <a href="#s3"  class="toc-item"><span class="toc-num">03</span><div class="toc-text"><strong>Color Palette</strong><span>Official 9-color system</span></div></a>
+    <a href="#s4"  class="toc-item"><span class="toc-num">04</span><div class="toc-text"><strong>Typography</strong><span>Volkhov · Poppins · Inter · Caveat</span></div></a>
+    <a href="#s5"  class="toc-item"><span class="toc-num">05</span><div class="toc-text"><strong>Brand Voice &amp; Tone</strong><span>How we speak</span></div></a>
+    <a href="#s6"  class="toc-item"><span class="toc-num">06</span><div class="toc-text"><strong>Core Brand Values</strong><span>Warm · Safe · Effortless</span></div></a>
+    <a href="#s7"  class="toc-item"><span class="toc-num">07</span><div class="toc-text"><strong>Target Audience</strong><span>Our Ducklings</span></div></a>
+    <a href="#s8"  class="toc-item"><span class="toc-num">08</span><div class="toc-text"><strong>Photography Style</strong><span>Visual direction</span></div></a>
+    <a href="#s9"  class="toc-item"><span class="toc-num">09</span><div class="toc-text"><strong>Positioning &amp; Differentiation</strong><span>Where we stand</span></div></a>
+    <a href="#s10" class="toc-item"><span class="toc-num">10</span><div class="toc-text"><strong>Brand Do's &amp; Don'ts</strong><span>Usage guardrails</span></div></a>
+  </div>
+</div>
+
+<!-- 01 BRAND PURPOSE -->
+<div class="section" id="s1">
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <div>
+      <p class="section-eyebrow">Brand Purpose &amp; Mission</p>
+      <h2 class="section-title">Why GoTixi exists</h2>
+      <p class="section-desc">Every brand decision flows from one belief: international travel should feel warm — not overwhelming. Real human expertise, backed by smart technology, makes that possible.</p>
+    </div>
+  </div>
+  <div class="tagline-hero">
+    <p>"Making International Travel <em>Warm, Safe</em> and <em>Effortless.</em>"</p>
+    <span class="caveat-line">— the promise behind every trip we plan</span>
+  </div>
+  <div class="three-col">
+    <div class="pillar-card"><div class="pillar-icon">🌡️</div><h4>Warm</h4><p>Every interaction — message, itinerary, or check-in call — should leave the traveler feeling cared for, not processed.</p></div>
+    <div class="pillar-card"><div class="pillar-icon">🛡️</div><h4>Safe</h4><p>From complex visas to unknown destinations, we remove fear. Safety is the confidence we give every customer before they leave home.</p></div>
+    <div class="pillar-card"><div class="pillar-icon">✨</div><h4>Effortless</h4><p>We absorb the complexity so travelers don't have to. The best trip is one where nothing feels like work — because we've done it all for them.</p></div>
+  </div>
+  <div class="divider"></div>
+  <p style="font-family:'Volkhov',serif;font-size:21px;font-style:italic;color:var(--slate);max-width:680px;line-height:1.65;">"Great journeys don't come from algorithms or templates. They're crafted through real travel experience, careful judgment, and an understanding of what truly makes a trip unforgettable."</p>
+  <p style="font-family:'Inter',sans-serif;font-size:10px;color:var(--orange);letter-spacing:2.5px;text-transform:uppercase;margin-top:12px;">— GoTixi, gotixi.com</p>
+</div>
+
+<!-- 02 LOGO -->
+<div class="section alt" id="s2">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <div>
+      <p class="section-eyebrow">Logo &amp; Identity</p>
+      <h2 class="section-title">The GoTixi mark</h2>
+      <p class="section-desc">The logo is our most recognisable asset. Use the correct version for each background, never alter it, and always give it room to breathe.</p>
+    </div>
+  </div>
+  <div class="logo-stage">
+    <div class="logo-box dark">
+      <img src="https://gotixi.com/images/common/logo-dark.svg" alt="GoTixi light logo"
+        onerror="this.outerHTML='<div style=\'font-family:Volkhov,serif;font-size:42px;font-weight:400;color:#FFF9F5\'>Go<span style=\'color:#F08802\'>Tixi</span></div>'">
+      <span class="logo-box-label">Light logo — for dark backgrounds</span>
+    </div>
+    <div class="logo-box light">
+      <img src="https://gotixi.com/images/common/logo.svg" alt="GoTixi dark logo"
+        onerror="this.outerHTML='<div style=\'font-family:Volkhov,serif;font-size:42px;font-weight:400;color:#323729\'>Go<span style=\'color:#F08802\'>Tixi</span></div>'">
+      <span class="logo-box-label">Dark logo — for light backgrounds</span>
+    </div>
+  </div>
+  <div class="two-col">
+    <div>
+      <div class="rule-card"><span class="rule-tag tag-do">Always</span><h4>Name Casing</h4><p>"GoTixi" — one word, capital G, capital T. Never "go tixi", "GOTIXI", "Go-Tixi", or "Gotixi". The casing reflects intentionality: it's both a verb and a destination.</p></div>
+      <div class="rule-card"><span class="rule-tag tag-do">Always</span><h4>Clear Space</h4><p>Maintain space equal to the cap-height of "G" on all four sides. Never crowd the logo with competing text, imagery, or graphic noise.</p></div>
+    </div>
+    <div>
+      <div class="rule-card"><span class="rule-tag tag-dont">Never</span><h4>Logo Alterations</h4><p>Do not stretch, rotate, recolor, drop-shadow, or modify the logo file. Always use the official SVG provided. When in doubt, request the asset from the brand team.</p></div>
+      <div class="rule-card"><h4>The Duck Mascot 🦆</h4><p>Customers are "Ducklings" — a term of warmth and community. The duck softens, never diminishes. Use it in onboarding, community contexts, and celebrations. Never in formal legal or financial copy.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 COLOR -->
+<div class="section" id="s3">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <div>
+      <p class="section-eyebrow">Color Palette</p>
+      <h2 class="section-title">Colors that feel like arrival</h2>
+      <p class="section-desc">Our palette is purposeful: Sunset Orange anchors with energy and warmth; Forest Green grounds with trust and depth; cream and grey neutrals give every composition room to breathe.</p>
+    </div>
+  </div>
+
+  <p style="font-family:'Inter',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--slate);margin-bottom:8px;font-weight:500;">Primary Brand Colors</p>
+  <div class="palette-grid" style="grid-template-columns:1fr 1fr;margin-bottom:20px;">
+    <div class="swatch dark" style="background:#F08802;height:200px;"><span class="swatch-name">Sunset Orange</span><span class="swatch-hex">#F08802</span><span class="swatch-role">Brand / Primary · CTAs · Accents</span></div>
+    <div class="swatch dark" style="background:#323729;height:200px;"><span class="swatch-name">Forest Green</span><span class="swatch-hex">#323729</span><span class="swatch-role">Dark Background · Heading Text · Footer</span></div>
+  </div>
+
+  <p style="font-family:'Inter',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--slate);margin-bottom:8px;font-weight:500;">Backgrounds &amp; Surfaces</p>
+  <div class="palette-grid" style="margin-bottom:20px;">
+    <div class="swatch light bordered" style="background:#FFF9F5;"><span class="swatch-name">Warm Cream</span><span class="swatch-hex">#FFF9F5</span><span class="swatch-role">Light Background</span></div>
+    <div class="swatch light bordered" style="background:#FFF4EC;"><span class="swatch-name">Soft Cream</span><span class="swatch-hex">#FFF4EC</span><span class="swatch-role">Section Fill</span></div>
+    <div class="swatch light bordered" style="background:#E7E7E7;"><span class="swatch-name">Light Grey</span><span class="swatch-hex">#E7E7E7</span><span class="swatch-role">Neutral Surface</span></div>
+    <div class="swatch light bordered" style="background:#E4E6E8;"><span class="swatch-name">Soft Grey</span><span class="swatch-hex">#E4E6E8</span><span class="swatch-role">Borders &amp; Dividers</span></div>
+  </div>
+
+  <p style="font-family:'Inter',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--slate);margin-bottom:8px;font-weight:500;">Text Colors</p>
+  <div class="palette-grid" style="margin-bottom:28px;">
+    <div class="swatch dark" style="background:#323729;"><span class="swatch-name">Deep Olive</span><span class="swatch-hex">#323729</span><span class="swatch-role">Heading Text</span></div>
+    <div class="swatch dark" style="background:#4B5563;"><span class="swatch-name">Charcoal</span><span class="swatch-hex">#4B5563</span><span class="swatch-role">Body Text</span></div>
+    <div class="swatch dark" style="background:#667085;"><span class="swatch-name">Slate Grey</span><span class="swatch-hex">#667085</span><span class="swatch-role">Muted Text · Captions</span></div>
+  </div>
+
+  <div class="two-col">
+    <div class="rule-card"><span class="rule-tag tag-do">Primary Use</span><h4>Sunset Orange (#F08802) for all CTAs</h4><p>All primary buttons, active states, highlights, links, and brand accents use Sunset Orange. It signals action and warmth simultaneously. Never dilute it with opacity on interactive elements.</p></div>
+    <div class="rule-card"><span class="rule-tag tag-dont">Avoid</span><h4>Generic blues, purples, or unrelated accents</h4><p>Do not substitute brand orange with platform-default blue (#0077FF) or purple gradients. Our orange is precise — unapproved substitutions erode recognition across every channel.</p></div>
+  </div>
+</div>
+
+<!-- 04 TYPOGRAPHY -->
+<div class="section alt" id="s4">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div>
+      <p class="section-eyebrow">Typography</p>
+      <h2 class="section-title">Words that land well</h2>
+      <p class="section-desc">Four typefaces, each with a specific job. Together they create a layered voice: editorial authority from Volkhov, clean clarity from Poppins, structural precision from Inter, and human warmth from Caveat.</p>
+    </div>
+  </div>
+  <div class="type-block"><span class="type-tag">Display / Headlines — Volkhov (Serif)</span><p class="specimen-volkhov">Journeys Crafted<br><em>With Care</em>, Not Clicks.</p><p class="type-meta">Weights: 400 Regular · 700 Bold · Italic variants &nbsp;|&nbsp; Use: H1 heroes, H2 section titles, pull quotes, destination names</p></div>
+  <div class="type-block"><span class="type-tag">Body / UI — Poppins (Sans-serif)</span><p class="specimen-poppins">From planning complex itineraries to key moments on the road, every GoTixi trip is guided by thoughtful human judgment — with support when it counts. Smart technology for speed and precision, with every trip reviewed by experienced travel experts.</p><p class="type-meta">Weights: 300 Light for body · 400 Regular for UI · 500 Medium for buttons &nbsp;|&nbsp; Use: body copy, buttons, card text, nav items</p></div>
+  <div class="type-block"><span class="type-tag">Labels / Captions — Inter (Sans-serif)</span><p class="specimen-inter">Travel Guide · Visa Free · 6 Days · Direct Flights · Summer Special</p><p class="type-meta">Weights: 400 · 500 &nbsp;|&nbsp; Use: overlines, tags, small labels, URLs, table headers — always uppercase, letter-spacing: 3–4px</p></div>
+  <div class="type-block"><span class="type-tag">Accent — Caveat (Handwritten)</span><p class="specimen-caveat">"We handle the details. You create the memories." ✈︎</p><p class="type-meta">Weights: 400 · 500 &nbsp;|&nbsp; Use: taglines, signature phrases, newsletter headers — sparingly; one instance per layout maximum</p></div>
+  <div class="rule-card" style="margin-top:16px;"><h4>Typographic Scale</h4><p>H1 Hero: Volkhov 56–92px, 400&ensp;·&ensp;H2 Section: Volkhov 32–50px&ensp;·&ensp;H3 Card: Poppins 16–18px, 500&ensp;·&ensp;Body: Poppins 14–16px, 300&ensp;·&ensp;Label: Inter 10–11px, 500, ALL CAPS, letter-spacing 3px&ensp;·&ensp;Accent: Caveat 22–36px, 500</p></div>
+</div>
+
+<!-- 05 VOICE -->
+<div class="section" id="s5">
+  <div class="section-header">
+    <div class="section-num">05</div>
+    <div>
+      <p class="section-eyebrow">Brand Voice &amp; Tone</p>
+      <h2 class="section-title">How GoTixi speaks</h2>
+      <p class="section-desc">Our voice is a knowledgeable friend who's traveled everywhere — not a corporate agent. Reassuring without patronizing. Inspiring without hype. Guiding without commanding.</p>
+    </div>
+  </div>
+  <div class="three-col" style="margin-bottom:28px;">
+    <div class="pillar-card"><div class="pillar-icon">🤝</div><h4>Warm &amp; Human</h4><p>We use "you" and "we" freely. We acknowledge real concerns. We never sound like a brochure or a terms-and-conditions document.</p></div>
+    <div class="pillar-card"><div class="pillar-icon">🎯</div><h4>Confident &amp; Calm</h4><p>"We've got you" lands better than "BEST DEAL EVER!" Confidence is quiet. We don't shout our value — we demonstrate it.</p></div>
+    <div class="pillar-card"><div class="pillar-icon">💡</div><h4>Expert, Not Jargon</h4><p>We know more than our customers — and share it plainly. No acronyms, no OTA-speak. Clarity is a form of respect.</p></div>
+  </div>
+  <div class="voice-pair"><div class="voice-box good"><p class="voice-label">✓ GoTixi Voice</p><blockquote>"We handle the details. You create the memories."</blockquote></div><div class="voice-box bad"><p class="voice-label">✕ Not GoTixi</p><blockquote>"Book NOW for AMAZING deals on premium travel packages!"</blockquote></div></div>
+  <div class="voice-pair"><div class="voice-box good"><p class="voice-label">✓ GoTixi Voice</p><blockquote>"Explore independently, travel confidently."</blockquote></div><div class="voice-box bad"><p class="voice-label">✕ Not GoTixi</p><blockquote>"Solo travel? No problem! Our packages are super affordable!"</blockquote></div></div>
+  <div class="voice-pair"><div class="voice-box good"><p class="voice-label">✓ GoTixi Voice</p><blockquote>"Support before you take off, while you're traveling, and if plans change."</blockquote></div><div class="voice-box bad"><p class="voice-label">✕ Not GoTixi</p><blockquote>"24/7 customer service available for all queries and complaints."</blockquote></div></div>
+  <div class="voice-pair"><div class="voice-box good"><p class="voice-label">✓ GoTixi Voice</p><blockquote>"Refined travel, intelligently planned."</blockquote></div><div class="voice-box bad"><p class="voice-label">✕ Not GoTixi</p><blockquote>"Luxury trips at the lowest guaranteed rates. Limited time offer!"</blockquote></div></div>
+</div>
+
+<!-- 06 VALUES -->
+<div class="section alt" id="s6">
+  <div class="section-header">
+    <div class="section-num">06</div>
+    <div>
+      <p class="section-eyebrow">Core Brand Values</p>
+      <h2 class="section-title">What we stand for</h2>
+      <p class="section-desc">These values describe how GoTixi already operates — not aspirations. They should be evident in every product decision, communication, and customer interaction.</p>
+    </div>
+  </div>
+  <div class="rule-card"><h4>Human-led, AI-assisted</h4><p>Technology accelerates but never replaces judgment. Every GoTixi trip is reviewed by an experienced human. In all customer-facing communications, lead with the human element — AI is the engine, not the face.</p></div>
+  <div class="rule-card"><h4>Deeply Personal, Never Templated</h4><p>We don't do copy-paste itineraries. Our brand should never feel mass-produced — not in copy, design, or service. Every traveler's uniqueness should feel acknowledged from the first message to the final check-in.</p></div>
+  <div class="rule-card"><h4>With You at Every Step</h4><p>GoTixi's 24/7 support is not a feature — it's a core value. Presence and reliability should permeate our voice, response times, and the feeling our brand leaves behind long after the trip ends.</p></div>
+  <div class="rule-card"><h4>Balanced Over Bargain</h4><p>We never compete on being cheapest. Our position is quality, curation, and peace of mind. Brand communications should never lead with discounts. Price is secondary to rightness, fit, and the value of a stress-free trip.</p></div>
+</div>
+
+<!-- 07 AUDIENCE -->
+<div class="section" id="s7">
+  <div class="section-header">
+    <div class="section-num">07</div>
+    <div>
+      <p class="section-eyebrow">Target Audience</p>
+      <h2 class="section-title">Our Ducklings</h2>
+      <p class="section-desc">GoTixi serves Indian international travelers with aspiration, disposable income, and a desire for curated experiences over DIY chaos. They trust people, not just platforms.</p>
+    </div>
+  </div>
+  <div class="audience-grid">
+    <div class="audience-card"><span class="audience-emoji">👨‍👩‍👧‍👦</span><h4>Families</h4><p>Prioritize comfort, safety, and activities for all ages. First or repeat international travelers.</p></div>
+    <div class="audience-card"><span class="audience-emoji">💑</span><h4>Couples</h4><p>Honeymooners and anniversary travelers seeking romance and once-in-a-lifetime moments.</p></div>
+    <div class="audience-card"><span class="audience-emoji">🧳</span><h4>Solo Explorers</h4><p>Independent travelers who want safety-backed itineraries without losing flexibility.</p></div>
+    <div class="audience-card"><span class="audience-emoji">🏔️</span><h4>Adventurers</h4><p>Active, off-the-beaten-path travelers: trekking, diving, multi-city routes.</p></div>
+    <div class="audience-card"><span class="audience-emoji">💎</span><h4>Luxury Travelers</h4><p>Premium experience seekers who value exclusivity, five-star stays, and white-glove planning.</p></div>
+    <div class="audience-card"><span class="audience-emoji">✈️</span><h4>First-Timers</h4><p>Anxious debut international travelers who need guidance far beyond just a booking confirmation.</p></div>
+  </div>
+  <div class="divider"></div>
+  <div class="metric-row">
+    <div class="metric-box"><div class="metric-num">500+</div><div class="metric-label">Destinations served</div></div>
+    <div class="metric-box"><div class="metric-num">50+</div><div class="metric-label">Happy Ducklings</div></div>
+    <div class="metric-box"><div class="metric-num">24/7</div><div class="metric-label">Support coverage</div></div>
+    <div class="metric-box"><div class="metric-num">₹75k</div><div class="metric-label">Entry price point</div></div>
+    <div class="metric-box"><div class="metric-num">100+</div><div class="metric-label">Curated itineraries</div></div>
+  </div>
+</div>
+
+<!-- 08 PHOTOGRAPHY -->
+<div class="section alt" id="s8">
+  <div class="section-header">
+    <div class="section-num">08</div>
+    <div>
+      <p class="section-eyebrow">Photography Style</p>
+      <h2 class="section-title">Images that feel like arriving</h2>
+      <p class="section-desc">GoTixi photography should make the viewer feel the warmth of landing somewhere new. Real light, real places, real moments — not staged stock perfection.</p>
+    </div>
+  </div>
+  <div class="photo-principle"><div class="photo-num">1</div><div><h4>Destination over Product</h4><p>Show destinations at their most evocative — golden-hour streets, water textures, architectural detail. Never lead with hotel lobbies or generic "happy tourist" stock imagery.</p></div></div>
+  <div class="photo-principle"><div class="photo-num">2</div><div><h4>Warm Light Preference</h4><p>Favor golden hour, dusk, or naturally warm tones. Cold, desaturated, or heavily filtered imagery contradicts our "Warm" value. Our world should feel inviting, not clinical.</p></div></div>
+  <div class="photo-principle"><div class="photo-num">3</div><div><h4>People as Presence, Not Pose</h4><p>When humans appear, they should feel candid — absorbed in the experience. Travel is about being present; photos should capture that state, not performative smiles for the camera.</p></div></div>
+  <div class="photo-principle"><div class="photo-num">4</div><div><h4>Authentic Local Texture</h4><p>Prefer images of genuine local culture — markets, architecture, landscapes — over chain hotel rooms or airport terminals. We sell places, not logistics.</p></div></div>
+  <div class="photo-principle"><div class="photo-num">5</div><div><h4>Consistent Crop Ratios</h4><p>Destination cards use a fixed 3:2 landscape crop. Hero images are full-bleed or 16:9. Never use portrait-oriented images in card grids — consistency builds visual trust across site and ads.</p></div></div>
+</div>
+
+<!-- 09 POSITIONING -->
+<div class="section" id="s9">
+  <div class="section-header">
+    <div class="section-num">09</div>
+    <div>
+      <p class="section-eyebrow">Positioning &amp; Differentiation</p>
+      <h2 class="section-title">Where GoTixi stands</h2>
+      <p class="section-desc">GoTixi is not a booking engine, not an OTA. It occupies a distinct position: the expert friend with 24/7 access — human-led, AI-assisted, and deeply personal.</p>
+    </div>
+  </div>
+  <div class="tagline-hero"><p>"<em>Built by travelers</em>, not templates."</p><span class="caveat-line">— the line that separates us from every OTA</span></div>
+  <div class="two-col">
+    <div>
+      <div class="rule-card"><h4>vs. OTAs (MakeMyTrip, Yatra, EaseMyTrip)</h4><p>OTAs optimize for transaction volume. GoTixi optimizes for trip quality. We are curators, not aggregators. Our edge is human judgment and care — not lowest price or widest inventory.</p></div>
+      <div class="rule-card"><h4>vs. Traditional Travel Agents</h4><p>Traditional agents have relationships but often lack transparency and modern speed. GoTixi brings AI efficiency and clean UX while keeping the warmth that platforms have stripped away.</p></div>
+    </div>
+    <div>
+      <div class="rule-card"><h4>vs. DIY Travelers</h4><p>DIY travelers trade stress for savings. GoTixi exists for those who value their time and peace of mind. We remove complexity without removing control — "you decide; we execute."</p></div>
+      <div class="rule-card"><h4>The Irreducible Promise</h4><p>Every GoTixi customer should feel they have a trusted expert in their corner — before, during, and after the trip. This commitment is the differentiator no algorithm can replicate.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- 10 DO / DON'T -->
+<div class="section alt" id="s10">
+  <div class="section-header">
+    <div class="section-num">10</div>
+    <div>
+      <p class="section-eyebrow">Brand Do's &amp; Don'ts</p>
+      <h2 class="section-title">Usage guardrails</h2>
+      <p class="section-desc">Consistency is built through small decisions. These rules protect the brand experience across every touchpoint — social, email, ads, proposals, and in-person interactions.</p>
+    </div>
+  </div>
+  <div class="do-dont-grid">
+    <div class="do-col">
+      <div class="do-header">✓ Always Do</div>
+      <div class="do-item">Write "GoTixi" — capital G and capital T — in all contexts</div>
+      <div class="do-item">Use Volkhov for all headline and display-level text</div>
+      <div class="do-item">Use Sunset Orange (#F08802) for all primary CTAs and brand accents</div>
+      <div class="do-item">Use Forest Green (#323729) for dark backgrounds, headers, and footers</div>
+      <div class="do-item">Apply Caveat font for taglines and signature phrases — max one per layout</div>
+      <div class="do-item">Reference the 3 core values (Warm, Safe, Effortless) in all pitches</div>
+      <div class="do-item">Lead with human expertise over technology in all customer-facing copy</div>
+      <div class="do-item">Use the correct logo version — light on dark, dark on light backgrounds</div>
+      <div class="do-item">Use warm-toned, 3:2 crop destination photography in card grids</div>
+      <div class="do-item">Speak in first-person plural — "We curate…", "Our team…", "We've got you"</div>
+    </div>
+    <div class="dont-col">
+      <div class="dont-header">✕ Never Do</div>
+      <div class="dont-item">Write "go tixi", "GOTIXI", "Go-Tixi", or "gotixi" in any branded context</div>
+      <div class="dont-item">Use Arial, Roboto, or Inter as a headline typeface in brand materials</div>
+      <div class="dont-item">Substitute brand orange with platform-default blue or any purple gradient</div>
+      <div class="dont-item">Stretch, rotate, recolor, shadow, or modify the GoTixi logo in any way</div>
+      <div class="dont-item">Use Caveat for body copy, buttons, or functional UI text</div>
+      <div class="dont-item">Lead with price as the primary value proposition ("cheapest packages")</div>
+      <div class="dont-item">Describe GoTixi as a "booking platform" or "OTA" — we are a travel partner</div>
+      <div class="dont-item">Use cold, desaturated, or heavily filtered photography in brand materials</div>
+      <div class="dont-item">Use ALL CAPS in body copy or overuse exclamation marks in any copy</div>
+      <div class="dont-item">Publish generic templated itineraries with no personalization signals</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <div>
+    <img src="https://gotixi.com/images/common/logo-dark.svg" alt="GoTixi"
+      onerror="this.outerHTML='<div style=\'font-family:Volkhov,serif;font-size:32px;font-weight:400;color:#FFF9F5\'>Go<span style=\'color:#F08802\'>Tixi</span></div>'">
+    <p style="margin-top:16px;">Nirvana Courtyard, Gurugram, India</p>
+    <p>contact@gotixi.com · +91 9910777018</p>
+  </div>
+  <div style="text-align:right;">
+    <p>Brand Guidelines · 2026</p>
+    <p style="margin-top:6px;">DPIIT Startup India Registered</p>
+    <p style="margin-top:6px;">© 2026 GoTixi. All Rights Reserved.</p>
+  </div>
+</div>
+
+</body>
+</html>
